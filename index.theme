@@ -1,0 +1,6 @@
+[theme]
+name=lightdm-nocturnedark
+description=LightDM Nocturne Dark Theme
+engine=lightdm-webkit-greeter
+url=index.html
+session=bspwm
