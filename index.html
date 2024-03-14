@@ -26,7 +26,7 @@
       </div>
 
       <div class="form__field">
-        <input type="submit" value="Sign In">
+        <input type="submit" id="login-button" tabIndex="3"></input>
       </div>
 
     </form>
@@ -37,12 +37,22 @@
         <img src="static/icons/octicon--gear-24.svg" alt="Sessions" width="24" height="24" class="dropbtn">
      
       <div id="dropdown-content" class="dropdown-content">
-        <ul class="option">
-          
-        </ul>
+        
         
       </div>
+
     </div>
+    <div class="dropdown2">
+    <img src="static/icons/octicon--device-mobile-24.svg" alt="Power" width="24" height="24" class="dropbtn2">
+    <div id="dropdown-content2" class="dropdown-content2">
+      <ul class="options">
+    <li><a href="#"><span class="icon"><i class="shutdown" aria-hidden="true" onclick="lightdm.shutdown();"></i></span><span class="title">Shutdown</span></a></li>
+    <li><a href="#"><span class="icon"><i class="reboot" aria-hidden="true" onclick="lightdm.restart();"></i></span><span class="title">Reboot</span></a></li>
+    <li><a href="#"><span class="icon"><i class="suspend" aria-hidden="true" onclick="lightdm.suspend();"></i></span><span class="title">Suspend</span></a></li>
+    <li><a href="#"><span class="icon"><i class="hibernate" aria-hidden="true" onclick="lightdm.hibernate();"></i></span><span class="title">Hibernate</span></a></li>
+      </ul>
+      </div>
+  </div>
     <script src="js/mock.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

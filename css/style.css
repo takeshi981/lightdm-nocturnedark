@@ -14,7 +14,7 @@
           justify-content: center;
 }
 
-/* helpers/grid.css */
+
 
 .grid {
   position: fixed;
@@ -27,7 +27,7 @@
   width: 90%;
 }
 
-/* helpers/hidden.css */
+
 
 .hidden {
   border: 0;
@@ -40,7 +40,7 @@
   width: 1px;
 }
 
-/* helpers/icon.css */
+
 .login-picture
 {
 	-webkit-user-drag: none;
@@ -70,7 +70,7 @@
   width: 1em;
 }
 
-/* layout/base.css */
+
 
 * {
   -webkit-box-sizing: inherit;
@@ -97,7 +97,7 @@ body {
   min-height: 100vh;
 }
 
-/* modules/anchor.css */
+
 
 a {
   color: #eee;
@@ -107,10 +107,10 @@ a {
 
 a:focus,
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* modules/form.css */
+
 
 input {
   background-image: none;
@@ -153,7 +153,7 @@ input[type='submit'] {
           flex: 1;
 }
 
-/* modules/login.css */
+
 
 .login {
   color: #eee;
@@ -204,7 +204,7 @@ input[type='submit'] {
   background-color: #d44179;
 }
 
-/* modules/text.css */
+
 
 p {
   margin-bottom: 24px;
@@ -234,6 +234,7 @@ p {
 	-webkit-transition:opacity .5s ease-in-out;
 }
 .dropdown {
+  list-style: none;
   position: fixed;
   display: inline-block;
   bottom: 0;
@@ -260,7 +261,53 @@ p {
   text-align: center;
 }
 
+.dropdown2 {
+  float: left;
+  list-style: none;
+  text-align: left;
+  position: fixed;
+  display: inline-block;
+  bottom: 0;
+  left: 100px;
+}
 
+.dropdown-content2{
+  float: left;
+  list-style: none;
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: darkgray;
+  min-width: 160;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0, 0.2);
+  z-index: 1;
+  bottom: 100%;
+}
+
+.dropdown2:hover .dropdown-content2 {
+  display: block;
+}
+
+.dropdown2 ul{
+  left: auto;
+  list-style-type: none;
+  overflow: hidden;
+  -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.option {
+  vertical-align: middle;
+  text-align: left;
+}
+.title{
+  text-align: right;
+}
+.icon {
+  position: absolute;
+  left: 0;
+}
 .octicon--eye{content: url("../static/icons/octicon--eye-24.svg"); position: absolute; right: 15px;}
 .octicon--eye-closed{content: url("../static/icons/octicon--eye-closed-24.svg"); position: absolute; right: 15px;}
 .octicon--lock{content: url("../static/icons/octicon--lock-24.svg"); position: relative;}
@@ -268,3 +315,8 @@ p {
 .octicon--x{content: url("../static/icons/octicon--x-24.svg"); position: absolute;}
 .octicon--arrow-right{content: url("../static/icons/octicon--arrow-right-16.svg"); position: absolute;}
 .octicon--gear{content: url("../static/icons/octicon--gear-24.svg"); position: absolute;}
+.octicon--device-mobile{content: url("../static/icons/octicon--device-mobile-24.svg"); position: absolute;}
+.shutdown{content: url("../static/icons/octicon--zap-16.svg"); position: absolute;}
+.reboot{content: url("../static/icons/octicon--sync-16.svg"); position: absolute;}
+.suspend{content: url("../static/icons/octicon--moon-16.svg"); position: absolute;}
+.hibernate{content: url("../static/icons/octicon--move-to-bottom-16.svg"); position: absolute;}

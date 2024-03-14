@@ -6,7 +6,7 @@ const pwShowHide = document.querySelectorAll(".pw_hide"),
       formOpenBtn = document.querySelector("#login-picture"),
       formContainer = document.querySelector(".form_container"),
       formCloseBtn = document.querySelector("#form_close"),
-      dropdown = document.querySelectorAll(".dropdown");
+      optionMenu = document.querySelector(".dropdown");
       
 
 let current_user = 0;
@@ -42,7 +42,33 @@ function display_user_picture(current_user){
           }
         });
       });
-
+      const dropdownBtns = document.querySelectorAll('.dropdown2');
+      let lastOpened = null;
+      
+      dropdownBtns.forEach(btn => btn.addEventListener('click', function() {
+        const menuContent = this.nextElementSibling;
+      
+        if (lastOpened !== null) {
+          const target = lastOpened;
+       
+          target.addEventListener('animationend', () => {
+            target.classList.remove('show', 'animate-out');
+       
+            if (target === lastOpened) {
+              lastOpened = null;
+            }
+          }, {
+            once: true
+          });
+      
+          target.classList.add('animate-out');
+        }
+      
+        if (lastOpened !== menuContent) {
+          menuContent.classList.add('show');
+          lastOpened = menuContent;
+        }
+      }));
  function populate_drop_down(){
 
         lightdm.sessions.forEach(function(session, index){
@@ -54,35 +80,72 @@ function display_user_picture(current_user){
            
            document.getElementById("dropdown-content").insertAdjacentHTML("beforeend", `
             
-           <li class="options">`+session_name+`</li>`);
+           <li class="option"><span class="option-text">`+session_name+`</span></li>`);
          
         });
         
        }
-       
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-      
-          
-          dropdown.forEach((opt) => {
-
-              opt.addEventListener("click", () => {
-
-                let selected_option = opt.querySelector(".options").innerText;
-          
-              current_session = selected_option;
-
-              alert("clicked "+current_session);
-            })
-          })
-            
-            }
-            
-          }
-          
+       document.onreadystatechange = () => {
+        if (document.readyState == "complete") {
         
+        const options = optionMenu.querySelectorAll(".option");
+        options.forEach((option) => {
+          
+          option.addEventListener("click",  () => {
+            
+            let selectedOption = option.querySelector(".option-text").innerText;
+            
         
-      
+           optionMenu.classList.remove("active");
+           
+           
+           current_session = selectedOption;
+           alert("clicked "+current_session);
+          });
+        });
+      }
+      }
+
+ buttonLogin.addEventListener("click", function(evt){
+  evt.preventDefault();
+  provide_secret();
+});         
+
+function start_authentication(){
    
+   
+  lightdm.start_authentication(user);
+  
+  show_message("Starting authentication");
+  
+  provide_secret();
+}
+
+function provide_secret()
+{
+  	let password = pass.value || null;
+  	if(password !== null) {
+        lightdm.provide_secret(password);
+    } else {
+      lightdm.cancel_authentication();
+      display_user_picture(current_user);
+      
+    }
+}        
+      
+function authentication_complete()
+{
+    if (lightdm.is_authenticated) {
+    	
+	lightdm.login(lightdm.authentication_user, current_session);
+    
+  } else {
+   	
+    	lightdm.cancel_authentication();
+      display_user_picture(current_user);
+      show_message("Invalid password");
+   	}
+
+}   
 display_user_picture(current_user);
 populate_drop_down();
