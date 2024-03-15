@@ -6,7 +6,9 @@ const pwShowHide = document.querySelectorAll(".pw_hide"),
       formOpenBtn = document.querySelector("#login-picture"),
       formContainer = document.querySelector(".form_container"),
       formCloseBtn = document.querySelector("#form_close"),
-      optionMenu = document.querySelector(".dropdown");
+      optionMenu = document.querySelector(".dropdown"),
+      back = document.querySelector("#userback"), 
+      fwd = document.querySelector("#userfwd");
       
 
 let current_user = 0;
@@ -14,9 +16,8 @@ let current_session = 0;
 
 function display_user_picture(current_user){
 
-  
-
-    document.getElementById("login-picture").style.opacity = 0;
+        if ( current_user >= 0 && lightdm.users[current_user] !== null ) {
+      document.getElementById("login-picture").style.opacity = 0;
   
         setTimeout(function(){
           document.getElementById("login-picture").src = lightdm.users[current_user].image;
@@ -29,6 +30,9 @@ function display_user_picture(current_user){
         lightdm.start_authentication(lightdm.users[current_user].name);
         document.getElementById("login__password").focus();
       }
+    }
+
+    
 
       pwShowHide.forEach((icon) => {
         icon.addEventListener("click", () => {
@@ -105,6 +109,26 @@ function display_user_picture(current_user){
         });
       }
       }
+back.addEventListener("click", function(evt){
+  
+  current_user--;
+    if (lightdm.users[current_user] !== undefined){
+      
+        display_user_picture(current_user);
+    }
+   
+ 
+});
+fwd.addEventListener("click", function(evt){
+  
+  current_user++;
+  
+    if (lightdm.users[current_user] !== undefined){
+      display_user_picture(current_user);
+    }
+  
+  
+});
 
  buttonLogin.addEventListener("click", function(evt){
   evt.preventDefault();

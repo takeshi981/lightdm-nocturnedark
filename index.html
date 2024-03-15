@@ -6,10 +6,15 @@
 
 </head>
 <body>
-  <img id="login-picture" type="img-button" >
+  <div class="parent">
+    <img id="login-picture" type="img-button" >
+    <img id="userback" type="img-button" src="static/icons/octicon--playr-24.svg">
+    <img id="userfwd" type="img-button" src="static/icons/octicon--play-24.svg">
+  </div>
+  
   
 <body class="align">
-  
+    
   <div class="grid">
     
     <form action="" method="POST" class="form login">
@@ -46,10 +51,10 @@
     <img src="static/icons/octicon--device-mobile-24.svg" alt="Power" width="24" height="24" class="dropbtn2">
     <div id="dropdown-content2" class="dropdown-content2">
       <ul class="options">
-    <li><a href="#"><span class="icon"><i class="shutdown" aria-hidden="true" onclick="lightdm.shutdown();"></i></span><span class="title">Shutdown</span></a></li>
-    <li><a href="#"><span class="icon"><i class="reboot" aria-hidden="true" onclick="lightdm.restart();"></i></span><span class="title">Reboot</span></a></li>
-    <li><a href="#"><span class="icon"><i class="suspend" aria-hidden="true" onclick="lightdm.suspend();"></i></span><span class="title">Suspend</span></a></li>
-    <li><a href="#"><span class="icon"><i class="hibernate" aria-hidden="true" onclick="lightdm.hibernate();"></i></span><span class="title">Hibernate</span></a></li>
+    <li><a href="#0"><span class="icon"><i class="shutdown" aria-hidden="true" onclick="lightdm.shutdown();"></i></span><span class="title" onclick="lightdm.shutdown();">Shutdown</span></a></li>
+    <li><a href="#0"><span class="icon"><i class="reboot" aria-hidden="true" onclick="lightdm.restart();"></i></span><span class="title" onclick="lightdm.restart();">Reboot</span></a></li>
+    <li><a href="#0"><span class="icon"><i class="suspend" aria-hidden="true" onclick="lightdm.suspend();"></i></span><span class="title" onclick="lightdm.suspend();">Suspend</span></a></li>
+    <li><a href="#0"><span class="icon"><i class="hibernate" aria-hidden="true" onclick="lightdm.hibernate();"></i></span><span class="title" onclick="lightdm.hibernate();">Hibernate</span></a></li>
       </ul>
       </div>
   </div>
